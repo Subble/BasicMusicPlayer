@@ -2,9 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>Plugin.17a64584-07f0-4186-805f-b21732544d60</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ManagedBass" Version="2.0.4" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
     <PackageReference Include="Moq" Version="4.9.0" />
     <PackageReference Include="xunit" Version="2.4.0" />
@@ -13,6 +15,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Subble.Core\Subble.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="bass.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="libbass.dylib">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="libbass.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

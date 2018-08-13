@@ -1,7 +1,8 @@
 ﻿using Subble.Core;
+using Subble.Core.Logger;
+using Subble.Core.Player;
 using Subble.Core.Plugin;
 using System.Collections.Generic;
-using Subble.Core.Config;
 
 namespace BasicMusicPlayer
 {
@@ -16,12 +17,17 @@ namespace BasicMusicPlayer
         public long LoadPriority => 20;
 
         public IEnumerable<Dependency> Dependencies
-            => new List<Dependency>();
+            => new[] {
+                new Dependency(typeof(ILogger), (0,0,1))
+            };
 
         public bool Initialize(ISubbleHost host)
         {
             if (host is null)
                 return false;
+
+            var player = new MusicPlayer(host);
+            host.ServiceContainer.RegisterService<IMusicPlayer>(player, Version);
 
             return true;
         }
